@@ -37,6 +37,7 @@
 
 {% endblock %}
 <!-- Muestra mensaje de error -->
+{% if messages %}
 <div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -52,7 +53,7 @@
 		</div>
 	</div>
 </div>
-
+{% endif %}
 <script>
 	$(document).ready(function()
 	{
