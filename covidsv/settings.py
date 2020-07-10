@@ -25,7 +25,7 @@ SECRET_KEY = 'u20k^j_*kdnu1uj7zxi6fr7-lw=t0#_h$9ibb*wz_x#%lrn^b9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['covidsv.tk','localhost']
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
