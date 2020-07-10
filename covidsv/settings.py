@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'covidsv.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql_cymysql',
-        'NAME': 'pruebas_edwin',
+        'NAME': 'pruebas_erick',
         'USER': 'hdp115',
          'PASSWORD': 'Covid19HDP115',
         'HOST': 'covidsv.tk',
