@@ -44,9 +44,11 @@
 			<div class="modal-header">
 				<h3>Error al iniciar sesión</h3>
 			</div>
+			{% for message in messages %}
 			<div class="modal-body">
 				<h4 {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</h4>
 			</div>
+			{% endfor %}
 			<div class="modal-footer">
 				<a href="#" data-dismiss="modal" class="btn btn-danger">Cerrar</a>
 			</div>
