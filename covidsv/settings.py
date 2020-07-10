@@ -79,9 +79,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'mysql_cymysql',
         'NAME': 'pruebas_edwin',
-        'USER': 'hdp115',
-         'PASSWORD': 'Covid19HDP115',
-        'HOST': 'covidsv.tk',
+        'USER': 'prueba',
+         'PASSWORD': 'prueba',
+        'HOST': 'propositocovid.duckdns.org',
         'PORT':3306,
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
