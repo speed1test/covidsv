@@ -39,11 +39,11 @@
 					<span class="btn btn-success" id="btn-login">
 						{{request.user.first_name}}&nbsp;&nbsp;&nbsp; ツ &nbsp;
 						{% if request.user.rol == 0 %}
-							Administrador&nbsp;&nbsp;<i class="fas fa-user-tie"></i>
+							Doctor&nbsp;&nbsp;<i class="fas fa-user-tie"></i>
 						{% elif request.user.rol == 1 %}
-							Técnico&nbsp;&nbsp;<i class="fas fa-user-ninja"></i>
+							Labatorista&nbsp;&nbsp;<i class="fas fa-user-ninja"></i>
 						{% elif request.user.rol == 2%}
-							Cliente&nbsp;&nbsp;<i class="fas fa-user-check"></i>
+							MINSAL&nbsp;&nbsp;<i class="fas fa-user-check"></i>
 						{% else %}
 						{% endif %}
 						

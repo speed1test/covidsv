@@ -5,4 +5,5 @@ from django.db import models
 
 class User(AbstractUser):
     pass
+    rol = models.IntegerField(default=0)
     direccion = models.CharField(max_length=250, null=True)
