@@ -5,10 +5,25 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 	<!-- Start Carousel -->
 	<div class="carousel-inner" role="listbox">
+			<div class="carousel-caption d-none d-md-block carousel-message">
 
-		<div class="carousel-caption d-none d-md-block carousel-message">
+			{% if request.user.rol == 0 %}
+			<!-- Vista para Admin -->
+			<h3>{{request.user.first_name}}&nbsp;{{request.user.last_name}}</h3>
+			<p class="float-right p-carousel">&#8212;&nbsp;Doctor</p>
+			{% elif request.user.rol == 1 %}
+			<!-- Vista para Técnico -->
+			<h3>{{request.user.first_name}}&nbsp;{{request.user.last_name}}</h3>
+			<p class="float-right p-carousel">&#8212;&nbsp;Laboratorista</p>
+			{% elif request.user.rol == 2 %}
+			<!-- Vista para Cliente -->
+			<h3>{{request.user.first_name}}&nbsp;{{request.user.last_name}}</h3>
+			<p class="float-right p-carousel">&#8212;&nbsp;MINSAL</p>
+			{% else %}
 			<!-- Vista para Visitante -->
 			<h2 class="animated infinite bounce pulse">COVID SV</h2>
+			{% endif %}
+
 
 		</div>
 
@@ -30,11 +45,27 @@
 {% block main_container %}
 
 <!-- Vista para un anonimo -->
-<h1 class="animated pulse" style="color: blue;">¡Somos tu mejor opción en todo lo que respecta a estadisticas</h1>
-<center>
-	<h1>Trabajando en el desarrollo del sitio...</h1>
-</center>
+	{% if request.user.rol == 0 %}
+		<!-- Vista para Doctor -->
+		<center>
+			<h1>
+				Hola doctor, en que podemos ayudarle?
+			</h1>
+		</center>
+		{% include 'index_doctor.html' %}
+	{% elif request.user.rol == 1 %}
+		<!-- Vista para Laboratorista -->
 
+	{% elif request.user.rol == 2 %}
+		<!-- Vista para MINSAL -->
+
+	{% else %}
+		<!-- Vista para Visitante -->
+			<h2 class="animated pulse" style="color: blue;">¡Somos tu mejor opción en todo lo que respecta a pruebas de COVID-19!</h2>
+			<center>
+				<h1>Trabajando en el desarrollo del sitio...</h1>
+			</center>
+	{% endif %}
 
 <!-- Muestra mensaje de error -->
 {% if messages %}
