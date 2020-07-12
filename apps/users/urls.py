@@ -12,6 +12,6 @@ urlpatterns = [
     path('reset/password_reset_done', PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'), name = 'password_reset_done'),
     re_path(r'^reset/(?P<uidb64>[0-9A-za-z_\-]+)/(?P<token>.+)/$', PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'), name = 'password_reset_confirm'),
     path('reset/done',PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html') , name = 'password_reset_complete'),
-	path('gestion_laboratorista/', views.gestion_laboratorista, name='gestion_laboratorista'),
+	path('gestion_laboratoristas/', views.gestion_laboratorista, name='gestion_laboratorista'),
 	path('eliminar-laboratorista/', views.eliminar_laboratorista, name='eliminar_laboratorista'),
 ]

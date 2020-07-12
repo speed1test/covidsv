@@ -39,7 +39,7 @@ def eliminar_laboratorista(request):
 	Laboratorista.objects.filter(id=request.POST['id_delete']).delete()
 	User.objects.filter(pk=request.POST['user_delete']).delete()
 
-	return redirect('laboratorista')
+	return redirect('gestion_laboratorista')
 
 
 # Create your views here.
