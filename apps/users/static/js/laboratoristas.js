@@ -18,7 +18,7 @@ $(document).ready(function(){
         modal.find('.modal-body #apellido-edit').val(apellido);
         modal.find('.modal-body #usuario-edit').val(usuario);
         modal.find('.modal-body #correo-edit').val(correo);
-        modal.find('.modal-body #telefono-edit').val(telefono);
+        modal.find('.modal-body #telefono-edit').val(dui);
         modal.find('.modal-body #direccion-edit').val(direccion);
 
     });
