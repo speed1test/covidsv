@@ -29,4 +29,17 @@ def logout(request):
 	auth.logout(request)
 	return redirect('/')
 
+def gestion_laboratorista(request):	
+	laboratoristas = Laboratorista.objects.all()
+	contexto = {'laboratoristas': laboratoristas,}
+	return render(request, 'gestion_usuarios/gestion_laboratorista.html', contexto)
+
+def eliminar_laboratorista(request):
+
+	Laboratorista.objects.filter(id=request.POST['id_delete']).delete()
+	User.objects.filter(pk=request.POST['user_delete']).delete()
+
+	return redirect('laboratorista')
+
+
 # Create your views here.

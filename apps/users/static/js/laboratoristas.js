@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	$('#editar-cliente-modal').on('show.bs.modal', function(event){
+	$('#editar-laboratoristas-modal').on('show.bs.modal', function(event){
 
         var modal = $(this);
         var link = $(event.relatedTarget);
@@ -23,7 +23,7 @@ $(document).ready(function(){
 
     });
 
-    $('#eliminar-cliente-modal').on('show.bs.modal', function(event){
+    $('#eliminar-laboratoristas-modal').on('show.bs.modal', function(event){
 
         var modal = $(this);
         var link = $(event.relatedTarget);
