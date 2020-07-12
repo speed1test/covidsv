@@ -41,5 +41,49 @@ def eliminar_laboratorista(request):
 
 	return redirect('gestion_laboratorista')
 
+def registrar_laboratorista(request):
+
+	nombre = request.POST['nombre']
+	apellido = request.POST['apellido']
+	usuario = request.POST['usuario']
+	correo = request.POST['correo']
+	password = request.POST['password']
+	password_2 = request.POST['password-2']
+	dui = request.POST['telefono']
+	direccion = request.POST['direccion']
+	activo = True
+	staff = True
+	rol = 2
+
+	user, laboratorista = User.objects.get_or_create(
+		username = usuario,
+		first_name = nombre,
+		last_name = apellido,
+		email = correo,
+		password = password,
+		dui = dui,
+		direccion = direccion,
+		rol = rol,
+		is_active = activo,
+		is_staff = staff
+	)
+	
+	if laboratorista:
+		user.set_password(password)
+		user.save()
+
+	covid_laboratorista = Laboratorista()
+
+	covid_laboratorista.user = user
+
+	covid_laboratorista.save()
+
+	if request.user.is_authenticated:
+
+		return redirect('gestion_laboratorista')
+
+	else:
+		
+		return redirect('/')
 
 # Create your views here.

@@ -14,4 +14,5 @@ urlpatterns = [
     path('reset/done',PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html') , name = 'password_reset_complete'),
 	path('gestion_laboratoristas/', views.gestion_laboratorista, name='gestion_laboratorista'),
 	path('eliminar-laboratorista/', views.eliminar_laboratorista, name='eliminar_laboratorista'),
+	path('registrar-laboratorista/', views.registrar_laboratorista, name='registrar_laboratorista'),
 ]
