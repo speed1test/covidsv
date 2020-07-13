@@ -53,7 +53,7 @@ def registrar_laboratorista(request):
 	direccion = request.POST['direccion']
 	activo = True
 	staff = True
-	rol = 2
+	rol = 1
 
 	user, laboratorista = User.objects.get_or_create(
 		username = usuario,
@@ -172,3 +172,4 @@ def editar_minsal(request):
 	minsal.save()
 
 	return redirect('gestion_minsal')
+

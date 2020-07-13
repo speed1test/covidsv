@@ -55,6 +55,12 @@
 		{% include 'index_doctor.html' %}
 	{% elif request.user.rol == 1 %}
 		<!-- Vista para Laboratorista -->
+		<center>
+			<h1>
+				Hola Laboratorista, En que puedo ayudarte?
+			</h1>
+		</center>
+		{% include 'index_laboratoristas.html' %}
 
 	{% elif request.user.rol == 2 %}
 		<!-- Vista para MINSAL -->
