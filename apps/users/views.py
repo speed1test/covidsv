@@ -86,4 +86,19 @@ def registrar_laboratorista(request):
 		
 		return redirect('/')
 
+def editar_laboratorista(request):
+
+	laboratorista = Laboratorista.objects.get(pk=request.POST['id_edit'])
+
+	laboratorista.user.first_name = request.POST['nombre_edit']
+	laboratorista.user.last_name = request.POST['apellido_edit']
+	laboratorista.user.username = request.POST['usuario_edit']
+	laboratorista.user.email = request.POST['correo_edit']
+	laboratorista.user.dui = request.POST['telefono_edit']
+	laboratorista.user.direccion = request.POST['direccion_edit']
+	laboratorista.user.save()
+	laboratorista.save()
+
+	return redirect('gestion_laboratorista')
+
 # Create your views here.

@@ -15,4 +15,5 @@ urlpatterns = [
 	path('gestion_laboratoristas/', views.gestion_laboratorista, name='gestion_laboratorista'),
 	path('eliminar-laboratorista/', views.eliminar_laboratorista, name='eliminar_laboratorista'),
 	path('registrar-laboratorista/', views.registrar_laboratorista, name='registrar_laboratorista'),
+	path('editar-laboratorista/', views.editar_laboratorista, name='editar_laboratorista'),
 ]
