@@ -5,6 +5,6 @@ from apps.covid.models import *
 
 admin.site.register(Doctor)
 admin.site.register(Laboratorista)
-admin.site.register(MINSAL)
+admin.site.register(Minsal)
 admin.site.register(Departamento)
 admin.site.register(Municipio)

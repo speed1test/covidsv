@@ -101,4 +101,15 @@ def editar_laboratorista(request):
 
 	return redirect('gestion_laboratorista')
 
-# Create your views here.
+def gestion_minsal(request):	
+	minsal = Minsal.objects.all()
+	contexto = {'minsal': minsal,}
+	return render(request, 'gestion_usuarios/gestion_minsal.html', contexto)
+
+def eliminar_minsal(request):
+
+	Minsal.objects.filter(id=request.POST['id_delete']).delete()
+	User.objects.filter(pk=request.POST['user_delete']).delete()
+
+	return redirect('gestion_minsal')
+

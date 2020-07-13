@@ -4,7 +4,7 @@ class Doctor(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 class Laboratorista(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-class MINSAL(models.Model):
+class Minsal(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 class Departamento(models.Model):
     idDepartamento = models.AutoField(primary_key=True)
