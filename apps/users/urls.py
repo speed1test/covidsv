@@ -18,4 +18,6 @@ urlpatterns = [
 	path('registrar-laboratorista/', views.registrar_laboratorista, name='registrar_laboratorista'),
 	path('editar-laboratorista/', views.editar_laboratorista, name='editar_laboratorista'),
 	path('eliminar-minsal', views.eliminar_minsal, name='eliminar_minsal'),
+	path('registrar-minsal/', views.registrar_minsal, name='registrar_minsal'),
+	path('editar-minsal/', views.editar_minsal, name='editar_minsal'),
 ]

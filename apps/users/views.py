@@ -113,3 +113,62 @@ def eliminar_minsal(request):
 
 	return redirect('gestion_minsal')
 
+def registrar_minsal(request):
+
+	nombre = request.POST['nombre']
+	apellido = request.POST['apellido']
+	usuario = request.POST['usuario']
+	correo = request.POST['correo']
+	password = request.POST['password']
+	password_2 = request.POST['password-2']
+	dui = request.POST['telefono']
+	direccion = request.POST['direccion']
+	activo = True
+	staff = True
+	rol = 2
+
+	user, minsal = User.objects.get_or_create(
+		username = usuario,
+		first_name = nombre,
+		last_name = apellido,
+		email = correo,
+		password = password,
+		dui = dui,
+		direccion = direccion,
+		rol = rol,
+		is_active = activo,
+		is_staff = staff
+	)
+	
+	if minsal:
+		user.set_password(password)
+		user.save()
+
+	covid_minsal = Minsal()
+
+	covid_minsal.user = user
+
+	covid_minsal.save()
+
+	if request.user.is_authenticated:
+
+		return redirect('gestion_minsal')
+
+	else:
+		
+		return redirect('/')
+
+def editar_minsal(request):
+
+	minsal = Minsal.objects.get(pk=request.POST['id_edit'])
+
+	minsal.user.first_name = request.POST['nombre_edit']
+	minsal.user.last_name = request.POST['apellido_edit']
+	minsal.user.username = request.POST['usuario_edit']
+	minsal.user.email = request.POST['correo_edit']
+	minsal.user.dui = request.POST['telefono_edit']
+	minsal.user.direccion = request.POST['direccion_edit']
+	minsal.user.save()
+	minsal.save()
+
+	return redirect('gestion_minsal')
