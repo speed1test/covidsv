@@ -20,4 +20,5 @@ urlpatterns = [
 	path('eliminar-minsal', views.eliminar_minsal, name='eliminar_minsal'),
 	path('registrar-minsal/', views.registrar_minsal, name='registrar_minsal'),
 	path('editar-minsal/', views.editar_minsal, name='editar_minsal'),
+	path('gestion_paciente/', views.gestion_paciente, name='gestion_paciente'),
 ]

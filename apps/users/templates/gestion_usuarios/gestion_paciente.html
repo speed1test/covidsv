@@ -134,9 +134,9 @@
 
 <div class="col-md-11 py-3 px-4 main-container">
 	{% csrf_token %}
-	<h4>Administraci&oacute;n de supervisores de MINSAL</h4>
+	<h4>Administraci&oacute;n de Pruebas por Paciente</h4>
 
-	<p class="lead">Estos son los supervisores de MINSAL registrados con nosotros.</p>
+	<p class="lead">Estos son los pacientes registrados con nososotros.</p>
 
 	<div class="row text-center">
 		<div class="col-md-10"></div>
@@ -151,17 +151,22 @@
 					<th class="col-1">N°</th>
 					<th class="col-3">Nombre</th>
 					<th class="col-1">DUI</th>
-					<th class="col-2">Correo</th>
+					<th class="col-2">Resultado</th>
 					<th class="col-5">Opciones</th>
 				</tr>
 			</thead>
 			<tbody>
-				{% for minsal in minsal %}
+				{% for minsal in pacientes %}
 				<tr class="d-flex text-center">
 					<td class="col-1 font-weight-bold">{{ forloop.counter }}</td>
-					<td class="col-3 font-weight-bold">{{minsal.user.first_name}} {{minsal.user.last_name}}</td>
-					<td class="col-1">{{minsal.user.dui}}</td>
-					<td class="col-2">{{minsal.user.email}}</td>
+					<td class="col-3 font-weight-bold">{{minsal.paciente.nombre_paciente}} {{minsal.paciente.apellido_paciente}}</td>
+					<td class="col-1">{{minsal.paciente.dui_paciente}}</td>
+					
+					{% if minsal.estado_paciente == True %}
+							<td class="col-2">Positivo</td>
+					{% else %}
+							<td class="col-2">Negativo</td>
+					{% endif %}
 					<td class="col-5">
 
 
@@ -262,29 +267,35 @@
 			</div>
 			
 			<div class="form-group row">
-				<label for="password" class="col-sm-2 col-form-label">Contraseña</label>
-				<div class="col-sm-10">
-					<input type="password" class="form-control" id="password" name="password" placeholder="">
-				</div>
-			</div>
-			<div class="form-group row align-items-center">
-				<label for="password-2" class="col-sm-2 col-form-label">Confirmar Contraseña</label>
-				<div class="col-sm-10">
-					<input type="password" class="form-control" id="password-2" name="password-2" placeholder="">
-				</div>
-			</div>
-			<div class="form-group row">
 				<label for="telefono" class="col-sm-2 col-form-label">DUI</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="telefono" name="telefono" placeholder="">
 				</div>
 			</div>
+
 			<div class="form-group row">
-				<label for="direccion" class="col-sm-2 col-form-label">Dirección</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="direccion" name="direccion" placeholder="">
-				</div>
-			</div>
+      			<label for="correo" class="col-sm-2 col-form-label">Resultado: </label>
+      			<div class="col-sm-10">
+      				<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        			<option selected>Seleccione..</option>
+        			<option value="1">Positivo</option>
+        			<option value="2">Negativo</option>
+      				</select>
+      			</div>
+    		</div>
+
+    		<div class="form-group row">
+      			<label for="correo" class="col-sm-2 col-form-label">Sexo: </label>
+      			<div class="col-sm-10">
+      				<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        			<option selected>Seleccione..</option>
+        			<option value="1">Masculino</option>
+        			<option value="2">Femenino</option>
+      				</select>
+      			</div>
+    		</div>
+
+
 			<div class="form-group row justify-content-md-center">
 				
 			</div>

@@ -173,3 +173,8 @@ def editar_minsal(request):
 
 	return redirect('gestion_minsal')
 
+def gestion_paciente(request):	
+	pacientes = CuadroMedico.objects.all()
+	contexto = {'pacientes': pacientes,}
+	return render(request, 'gestion_usuarios/gestion_paciente.html', contexto)
+

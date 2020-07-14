@@ -20,3 +20,14 @@ class Municipio(models.Model):
     
     def __str__(self):
         return self.nombre_municipio
+
+class Paciente(models.Model):
+    idPaciente = models.AutoField(primary_key=True)
+    nombre_paciente = models.CharField(max_length=50, null = False, blank = False)
+    apellido_paciente = models.CharField(max_length=50, null = False, blank = False)
+    dui_paciente = models.CharField(max_length=9, null=False, blank = False)
+class CuadroMedico(models.Model):
+    idCuadroMedico = models.AutoField(primary_key=True) 
+    paciente = models.OneToOneField(Paciente, null = True, blank = True, on_delete=models.CASCADE)
+    estado_paciente = models.BooleanField()
+    descripcion_paciente = models.CharField(max_length=50)
