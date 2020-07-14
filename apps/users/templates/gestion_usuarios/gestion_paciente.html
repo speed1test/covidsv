@@ -263,7 +263,7 @@
 	<form action="{% url 'registrar_minsal' %}" method="POST">
 
 		<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Agregar nuevo supervisor</h5>
+			<h5 class="modal-title" id="exampleModalLabel">Agregar nuevo paciente</h5>
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
@@ -280,12 +280,6 @@
 				<label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="apellido" name="apellido" placeholder="">
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="usuario" name="usuario" placeholder="">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -324,6 +318,12 @@
       			</div>
     		</div>
     		<div class="form-group row">
+				<label for="fecha_propuesta" class="col-sm-2 col-form-label">Fecha Propuesta</label>
+				<div class="col-sm-10">
+					<input type="date" class="form-control" id="fecha" name="fecha" placeholder="" required="">
+				</div>
+			</div>
+    		<div class="form-group row">
       			<label for="correo" class="col-sm-2 col-form-label">Departamento:</label>
       			<div class="col-sm-10">
                     {{ form.departamento.label_tag }} 
@@ -359,71 +359,96 @@
 <!-- Modal Editar MINSAL -->
 <div class="modal fade" id="editar-minsal-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
-		
+
 	<div class="modal-content">
-	<form action="{% url 'editar_minsal' %}" method="POST">
-			
+	<form action="{% url 'registrar_minsal' %}" method="POST">
+
 		<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Editar Cliente.</h5>
+			<h5 class="modal-title" id="exampleModalLabel">Editar paciente</h5>
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
 
 		<div class="modal-body">
-			<div class="form-group row d-none">
-				<label for="id-edit" class="col-sm-2 col-form-label">ID de Cliente</label>
+			<div class="form-group row">
+				<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="id-edit" name="id_edit" placeholder="">
+					<input type="text" class="form-control" id="nombre" name="nombre" placeholder="">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="nombre-edit" class="col-sm-2 col-form-label">Nombre</label>
+				<label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="nombre-edit" name="nombre_edit" placeholder="">
+					<input type="text" class="form-control" id="apellido" name="apellido" placeholder="">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="apellido-edit" class="col-sm-2 col-form-label">Apellido</label>
+				<label for="correo" class="col-sm-2 col-form-label">Correo</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="apellido-edit" name="apellido_edit"
-						placeholder="">
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="usuario-edit" class="col-sm-2 col-form-label">Usuario</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="usuario-edit" name="usuario_edit" placeholder="">
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="correo-edit" class="col-sm-2 col-form-label">Correo</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="correo-edit" name="correo_edit"
-						placeholder="email@example.com">
+					<input type="text" class="form-control" id="correo" name="correo" placeholder="email@example.com">
 				</div>
 			</div>
 			
 			<div class="form-group row">
-				<label for="telefono-edit" class="col-sm-2 col-form-label">Telefono</label>
+				<label for="telefono" class="col-sm-2 col-form-label">DUI</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="telefono-edit" name="telefono_edit"
-						placeholder="">
+					<input type="text" class="form-control" id="telefono" name="telefono" placeholder="">
 				</div>
 			</div>
+
 			<div class="form-group row">
-				<label for="direccion-edit" class="col-sm-2 col-form-label">Dirección</label>
+      			<label for="correo" class="col-sm-2 col-form-label">Resultado: </label>
+      			<div class="col-sm-10">
+      				<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        			<option selected>Seleccione..</option>
+        			<option value="1">Positivo</option>
+        			<option value="2">Negativo</option>
+      				</select>
+      			</div>
+    		</div>
+
+    		<div class="form-group row">
+      			<label for="correo" class="col-sm-2 col-form-label">Sexo: </label>
+      			<div class="col-sm-10">
+      				<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        			<option selected>Seleccione..</option>
+        			<option value="1">Masculino</option>
+        			<option value="2">Femenino</option>
+      				</select>
+      			</div>
+    		</div>
+    		<div class="form-group row">
+				<label for="fecha_propuesta" class="col-sm-2 col-form-label">Fecha Propuesta</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="direccion-edit" name="direccion_edit"
-						placeholder="">
+					<input type="date" class="form-control" id="fecha" name="fecha" placeholder="" required="">
 				</div>
+			</div>
+    		<div class="form-group row">
+      			<label for="correo" class="col-sm-2 col-form-label">Departamento:</label>
+      			<div class="col-sm-10">
+                    {{ form.departamento.label_tag }} 
+                    {{ form.departamento }}
+      			</div>
+    		</div>
+    		<div class="form-group row">
+      			<label for="correo" class="col-sm-2 col-form-label">Municipio:</label>
+      			<div class="col-sm-10">
+                    {{ form.municipio.label_tag }} 
+                    {{ form.municipio }}
+      			</div>
+    		</div>
+
+
+			<div class="form-group row justify-content-md-center">
+				
 			</div>
 		</div>
-
+		
 		<div class="modal-footer">
 			{% csrf_token %}
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-			<input type="submit" class="btn btn-success" value="Editar" id="Editar">
+			<button type="submit" class="btn btn-primary col-sm-4 col-form-label" id="Registrar">Registrar</button>
 		</div>
 
 	</form>
