@@ -131,7 +131,36 @@
 				});
         	});
 </script>
+<script type="text/javascript">
 
+            $(document).ready(function() {
+                $("#id_departamento").on("change", getMunicipios);
+                $("#filtrarInfo").on("click", getInfo);
+            });
+
+            function getMunicipios() {
+                var departamentoId = $("#id_departamento").val();
+                if (departamentoId) {
+                    // Eliminamos las opciones anteriores del select
+                    $("#id_municipio").html("");
+                    var request = $.ajax({
+                        type: "GET",
+                        url: "{% url 'get_municipios' %}",
+                        data: {
+                            "departamento_id": departamentoId,
+                        },
+                    });
+                    request.done(function(response) {
+                        // Agregamos los resultados al select
+                        $("#id_municipio").html(response.municipios);
+                        $("#id_municipio").trigger("change");
+                    });
+                } else {
+                    $("#id_municipio").html("<option value='' selected='selected'>--------</option>");
+                    $("#id_municipio").trigger("change");
+                }
+            }
+</script>
 <div class="col-md-11 py-3 px-4 main-container">
 	{% csrf_token %}
 	<h4>Administraci&oacute;n de Pruebas por Paciente</h4>
@@ -292,6 +321,20 @@
         			<option value="1">Masculino</option>
         			<option value="2">Femenino</option>
       				</select>
+      			</div>
+    		</div>
+    		<div class="form-group row">
+      			<label for="correo" class="col-sm-2 col-form-label">Departamento:</label>
+      			<div class="col-sm-10">
+                    {{ form.departamento.label_tag }} 
+                    {{ form.departamento }}
+      			</div>
+    		</div>
+    		<div class="form-group row">
+      			<label for="correo" class="col-sm-2 col-form-label">Municipio:</label>
+      			<div class="col-sm-10">
+                    {{ form.municipio.label_tag }} 
+                    {{ form.municipio }}
       			</div>
     		</div>
 

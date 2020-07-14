@@ -3,6 +3,8 @@ from django.urls import path, re_path, include
 from django.contrib.auth.views import LoginView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.urls import reverse_lazy
 from . import views
+from django.conf.urls import url
+from .ajax import *
 
 urlpatterns = [
 	path('login/', views.login, name='login'),
@@ -21,4 +23,5 @@ urlpatterns = [
 	path('registrar-minsal/', views.registrar_minsal, name='registrar_minsal'),
 	path('editar-minsal/', views.editar_minsal, name='editar_minsal'),
 	path('gestion_paciente/', views.gestion_paciente, name='gestion_paciente'),
+	url(r'ajax/get_municipios', get_municipios, name='get_municipios'),
 ]

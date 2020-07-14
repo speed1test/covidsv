@@ -4,8 +4,11 @@ from django.contrib.auth.models import auth
 from django.contrib import messages
 from .models import User
 from django.core import mail
-
 from apps.covid.models import *
+from .forms import FormFiltrar
+
+departamentos = Departamento.objects.all()
+municipios = Municipio.objects.all()
 
 def login(request):
 
@@ -175,6 +178,8 @@ def editar_minsal(request):
 
 def gestion_paciente(request):	
 	pacientes = CuadroMedico.objects.all()
-	contexto = {'pacientes': pacientes,}
+	form = FormFiltrar()
+	contexto = {'pacientes': pacientes,'form':form,}
 	return render(request, 'gestion_usuarios/gestion_paciente.html', contexto)
+
 

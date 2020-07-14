@@ -1,6 +1,5 @@
 from django.http import JsonResponse
-
-from .models import Departamento, Municipio
+from apps.covid.models import Departamento, Municipio
 
 
 def get_municipios(request):
